@@ -15,29 +15,18 @@ class RepaRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Repa::class);
     }
-
-    //    /**
-    //     * @return Repa[] Returns an array of Repa objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('r.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Repa
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        
+     /**
+     * Retourne toutes les visites triées sur un champ
+     * @param type $champ
+     * @param type $ordre
+     * @return Repa[]
+     */
+    public function findAllOrderBy($champ, $ordre): array{
+        return $this->createQueryBuilder('v')
+                ->orderBy('v.'.$champ, $ordre)
+                ->getQuery()
+                ->getResult();
+    }
+   
 }

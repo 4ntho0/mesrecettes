@@ -4,9 +4,21 @@
     <table class="table table-striped">
         <thead>
             <tr>        
-                <th class="text-left align-top" scope="col">Recette</th>
-                <th class="text-center align-top" scope="col">Note</th>
-                <th class="text-center align-top" scope="col">Date</th>
+                <th class="text-left align-top" scope="col">
+                    Recette
+                    <a href="{{ path('recettes.sort', {champ:'nom', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('recettes.sort', {champ:'nom', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                </th>
+                <th class="text-center align-top" scope="col">
+                    Note
+                    <a href="{{ path('recettes.sort', {champ:'note', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('recettes.sort', {champ:'note', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                </th>
+                <th class="text-center align-top" scope="col">
+                    Date
+                    <a href="{{ path('recettes.sort', {champ:'datecreation', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('recettes.sort', {champ:'datecreation', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                </th>
             </tr>
         </thead>
         <tbody>

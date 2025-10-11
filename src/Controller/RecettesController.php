@@ -33,10 +33,19 @@ class RecettesController extends AbstractController{
     
      #[Route('/recettes', name: 'recettes')]
     public function index(): Response {
-        $repas = $this->repository->findAll();
+        $repas = $this->repository->findAllOrderBy('datecreation','DESC');
         return $this->render("pages/recettes.html.twig", [
             'repas' => $repas
         ]);
     }
+    
+     #[Route('/recettes/tri/{champ}/{ordre}', name: 'recettes.sort')]
+    public function sort($champ, $ordre): Response{
+        $repas = $this->repository->findAllOrderBy($champ, $ordre);
+        return $this->render("pages/recettes.html.twig", [
+            'repas' => $repas
+        ]);
+    }
+    
 }
 

@@ -28,5 +28,16 @@ class RepaRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
     }
+    
+     /**
+     * Supprime un repa
+     * @param Repa $repa
+     * @return void
+     */
+    public function remove(Repa $repa): void
+    {
+        $this->getEntityManager()->remove($repa);
+        $this->getEntityManager()->flush();
+    }    
    
 }

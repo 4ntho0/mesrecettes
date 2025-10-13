@@ -47,5 +47,13 @@ class RecettesController extends AbstractController{
         ]);
     }
     
+    #[Route('/recettes/recette/{id}', name: 'recettes.showone')]
+    public function showOne($id): Response{
+        $repa = $this->repository->find($id);
+        return $this->render("pages/recette.html.twig", [
+            'repa' => $repa
+        ]);
+    }
+    
 }
 

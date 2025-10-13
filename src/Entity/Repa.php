@@ -25,6 +25,9 @@ class Repa
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $datecreation = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $duree = null;
     
     public function getId(): ?int
     {
@@ -87,4 +90,16 @@ class Repa
             return $this->datecreation->format('d/m/Y');
         }
     }
+
+     public function getDuree(): ?int
+     {
+         return $this->duree;
+     }
+
+     public function setDuree(?int $duree): static
+     {
+         $this->duree = $duree;
+
+         return $this;
+     }
 }

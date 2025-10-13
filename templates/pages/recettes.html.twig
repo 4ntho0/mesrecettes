@@ -10,11 +10,16 @@
                     <a href="{{ path('recettes.sort', {champ:'nom', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
                 </th>
                 <th class="text-center align-top" scope="col">
+                    Durée
+                    <a href="{{ path('recettes.sort', {champ:'duree', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('recettes.sort', {champ:'duree', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                </th>
+                <th class="text-center align-top" scope="col">
                     Note
                     <a href="{{ path('recettes.sort', {champ:'note', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('recettes.sort', {champ:'note', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
                 </th>
-                <th class="text-center align-top" scope="col">
+                <th class="text-right align-top" scope="col">
                     Date
                     <a href="{{ path('recettes.sort', {champ:'datecreation', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('recettes.sort', {champ:'datecreation', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
@@ -26,10 +31,14 @@
                 <tr>
                     <td>
                         <h5 class="text-primary">
-                            <a href="#">{{ repa.nom }}</a>
+                            <a href="{{ path('recettes.showone', {id:repa.id}) }}">{{ repa.nom }}</a>
                         </h5>
                     </td>
                     <td class="text-center">
+                        {{ repa.duree }} min
+                    </td>
+                    <td class="text-center">
+                    
                          <strong>
                             {% if repa.note<10 %}
                                 <div class="text-danger">

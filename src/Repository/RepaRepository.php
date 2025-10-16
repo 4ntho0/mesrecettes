@@ -39,5 +39,16 @@ class RepaRepository extends ServiceEntityRepository
         $this->getEntityManager()->remove($repa);
         $this->getEntityManager()->flush();
     }    
+    
+    /**
+     * Ajoute ou modifie une visite
+     * @param Repa $repa
+     * @return void
+     */
+    public function add(Repa $repa):void{
+        
+        $this->getEntityManager()->persist($repa);
+        $this->getEntityManager()->flush();
+    }
    
 }

@@ -45,4 +45,23 @@ class AdminRecettesController extends AbstractController{
         $this->repository->remove($repa);
         return $this->redirectToRoute('admin.recettes');
     }
+    
+     #[Route('/admin/edit/{id}', name: 'admin.recette.edit')]
+    public function edit(int $id, Request $request): Response{
+        $repa = $this->repository->find($id);
+        $formRepa = $this->createForm(RepaType::class, $repa);
+        
+         $formRepa->handleRequest($request);
+        if($formRepa->isSubmitted() && $formRepa->isValid()){
+            $this->repository->add($repa);
+            return $this->redirectToRoute('admin.recettes');
+        }
+        
+        return $this->render("admin/admin.recette.edit.html.twig", [
+            'repa' => $repa,
+            'formrepa' => $formRepa->createView() 
+        ]);
+    }
+    
+    
 }

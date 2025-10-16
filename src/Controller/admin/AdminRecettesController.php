@@ -63,5 +63,22 @@ class AdminRecettesController extends AbstractController{
         ]);
     }
     
+      #[Route('/admin/ajout', name: 'admin.recette.ajout')]
+    public function ajout(Request $request): Response{
+        $repa = new Repa();
+        $formRepa = $this->createForm(RepaType::class, $repa);
+
+        $formRepa->handleRequest($request);
+        if($formRepa->isSubmitted() && $formRepa->isValid()){
+            $this->repository->add($repa);
+            return $this->redirectToRoute('admin.recettes');
+        }
+
+        return $this->render("admin/admin.recette.ajout.html.twig", [
+            'repa' => $repa,
+            'formrepa' => $formRepa->createView()
+        ]);
+    }
+    
     
 }

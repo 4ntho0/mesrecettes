@@ -78,7 +78,6 @@ class Repa
     public function setDatecreation(?\DateTime $datecreation): static
     {
         $this->datecreation = $datecreation;
-
         return $this;
     }
     
